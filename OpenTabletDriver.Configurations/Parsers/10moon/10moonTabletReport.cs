@@ -18,7 +18,7 @@ namespace OpenTabletDriver.Configurations.Parsers.TenMoon
 
             var buttonPressed = (report[9] & 6) != 0;
             var prePressure = report[5] << 8 | report[6];
-            Pressure = (uint)(1800 - (prePressure - (buttonPressed ? 50 : 0)));
+            Pressure = (uint)Math.Max(1400 - prePressure, 0);
 
             PenButtons = new bool[]
             {
