@@ -41,6 +41,7 @@ namespace OpenTabletDriver.Desktop.Interop.Input.Relative
 
         public void SetPosition(Vector2 delta)
         {
+            Log.Write("XXX", $"");
             delta += _error;
             _error = new Vector2(delta.X % 1, delta.Y % 1);
 

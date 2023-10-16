@@ -30,7 +30,7 @@ namespace OpenTabletDriver.UX.Controls
                 }
                 else
                 {
-                    if (editorPanel.Content.ID == profile.OutputMode.Path)
+                    if (editorPanel.Content != null && editorPanel.Content.ID == profile.OutputMode.Path)
                         return;
 
                     var layout = new StackLayout
