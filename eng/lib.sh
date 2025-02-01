@@ -191,17 +191,17 @@ prepare_build() {
     exit_with_error "Could not find OpenTabletDriver folder!"
   fi
 
-  if [ -d "${OUTPUT}" ]; then
-    echo "Cleaning old build outputs..."
-    for dir in "${OUTPUT}"/*; do
-      dir_name=$(basename "${dir}")
-      if [ "${dir_name}" != "userdata" ]; then
-        if ! rm -rf "${dir}" 2>/dev/null; then
-          exit_with_error "Could not clean old build dirs. Please manually remove contents of ${OUTPUT} folder."
-        fi
-      fi
-    done
-  fi
+  #if [ -d "${OUTPUT}" ]; then
+  #  echo "Cleaning old build outputs..."
+  #  for dir in "${OUTPUT}"/*; do
+  #    dir_name=$(basename "${dir}")
+  #    if [ "${dir_name}" != "userdata" ]; then
+  #      if ! rm -rf "${dir}" 2>/dev/null; then
+  #        exit_with_error "Could not clean old build dirs. Please manually remove contents of ${OUTPUT} folder."
+  #      fi
+  #    fi
+  #  done
+  #fi
 
   mkdir -p "${OUTPUT}"
 }
@@ -243,8 +243,8 @@ build() {
   echo "Restoring packages..."
   dotnet restore --runtime "${NET_RUNTIME}" --verbosity quiet
 
-  echo "Running dotnet clean..."
-  dotnet clean --configuration "${CONFIG}" --verbosity quiet
+  #echo "Running dotnet clean..."
+  #dotnet clean --configuration "${CONFIG}" --verbosity quiet
 
   if [ "${PORTABLE}" = "true" ]; then
     mkdir -p "${OUTPUT}/userdata"
